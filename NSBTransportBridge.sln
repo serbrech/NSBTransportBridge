@@ -7,7 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bridge", "Bridge\Bridge.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Earth", "Earth\Earth.csproj", "{11859718-4A64-4E95-A22D-CB22FA54E821}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Heaven", "Heaven\Heaven.csproj", "{05030779-0515-4F4C-A5C2-EC6C8FE5929C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Messages", "Messages\Messages.csproj", "{0B58B801-5E4C-4454-8DFF-6DDA4B14CB07}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurfLeague", "SurfLeague\SurfLeague.csproj", "{05030779-0515-4F4C-A5C2-EC6C8FE5929C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +25,10 @@ Global
 		{11859718-4A64-4E95-A22D-CB22FA54E821}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{11859718-4A64-4E95-A22D-CB22FA54E821}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{11859718-4A64-4E95-A22D-CB22FA54E821}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B58B801-5E4C-4454-8DFF-6DDA4B14CB07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B58B801-5E4C-4454-8DFF-6DDA4B14CB07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B58B801-5E4C-4454-8DFF-6DDA4B14CB07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B58B801-5E4C-4454-8DFF-6DDA4B14CB07}.Release|Any CPU.Build.0 = Release|Any CPU
 		{05030779-0515-4F4C-A5C2-EC6C8FE5929C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{05030779-0515-4F4C-A5C2-EC6C8FE5929C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05030779-0515-4F4C-A5C2-EC6C8FE5929C}.Release|Any CPU.ActiveCfg = Release|Any CPU

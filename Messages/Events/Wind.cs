@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Heaven
+namespace Messages.Events
 {
-    public class Class1
+    public class Wind
     {
+        public int Speed { get; set; }
     }
 }
