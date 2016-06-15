@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Configuration;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using Messages.Events;
+using Microsoft.WindowsAzure;
 using NServiceBus;
 using NServiceBus.AzureServiceBus;
 
@@ -37,7 +39,7 @@ namespace Bridge
 
             transport.Queues().SupportOrdering(true);
             transport.UseTopology<ForwardingTopology>();
-            transport.ConnectionString("Endpoint=sb://[namespace].servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[secret]");
+            transport.ConnectionString(ConfigurationManager.AppSettings["Microsoft.ServiceBus.ConnectionString"]);
             endpointConfiguration.EnableInstallers();
             endpointConfiguration.UsePersistence<InMemoryPersistence>();
             endpointConfiguration.SendFailedMessagesTo("bridge.error");
