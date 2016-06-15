@@ -4,11 +4,11 @@ using NServiceBus;
 
 namespace Earth
 {
-    public class EarthEventHandler : IHandleMessages<SwellSizeChanged>
+    public class EarthEventHandler : IHandleMessages<ISwellSizeChanged>
     {
        
         public IBus Bus { get; set; }
-        public void Handle(SwellSizeChanged message)
+        public void Handle(ISwellSizeChanged message)
         {
             Console.WriteLine("The swell size has changed to {0}!", message.Size);
         }

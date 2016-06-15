@@ -29,8 +29,7 @@ namespace Earth
                    
                     while (!cancellationToken.IsCancellationRequested)
                     {
-                        Guid identification = Guid.NewGuid();
-                        this.Bus.Publish<SwellSizeChanged>(m =>
+                        this.Bus.Publish<ISwellSizeChanged>(m =>
                         {
                             m.Size = random.Next(0, 15);
                         });

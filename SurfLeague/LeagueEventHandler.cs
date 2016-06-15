@@ -10,9 +10,9 @@ using Messages.Events;
 
 namespace SurfLeague
 {
-    public class LeagueEventHandler : IHandleMessages<SwellSizeChanged>
+    public class LeagueEventHandler : IHandleMessages<ISwellSizeChanged>
     {
-        public Task Handle(SwellSizeChanged message, IMessageHandlerContext context)
+        public Task Handle(ISwellSizeChanged message, IMessageHandlerContext context)
         {
             Console.WriteLine("Swell size has changed to {0}!", message.Size);
             return Task.Run(() => League.AnalyzeElements(message.Size, context));

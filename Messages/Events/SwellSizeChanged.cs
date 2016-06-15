@@ -1,7 +1,7 @@
 ﻿namespace Messages.Events
 {
-    public class SwellSizeChanged
+    public interface ISwellSizeChanged
     {
-        public int Size { get; set; }
+        int Size { get; set; }
     }
 }

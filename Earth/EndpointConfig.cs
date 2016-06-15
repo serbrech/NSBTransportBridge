@@ -10,8 +10,7 @@ namespace Earth
             configuration.UseTransport<MsmqTransport>();
 
             configuration.Conventions()
-                .DefiningEventsAs(t => t.Namespace != null && t.Namespace.StartsWith("Messages.Events"))
-                .DefiningCommandsAs(t => t.Namespace != null && t.Namespace.StartsWith("Messages.Commands"));
+                .DefiningEventsAs(t => t.Namespace != null && t.Namespace.StartsWith("Messages.Events"));
         }
     }
 }
