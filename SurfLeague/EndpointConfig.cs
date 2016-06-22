@@ -1,5 +1,6 @@
 
 using System.Configuration;
+using Messages.Events;
 using Microsoft.WindowsAzure;
 
 namespace SurfLeague
@@ -15,7 +16,8 @@ namespace SurfLeague
             configuration.UsePersistence<InMemoryPersistence>();
             var transport = configuration.UseTransport<AzureServiceBusTransport>();
             transport.ConnectionString(ConfigurationManager.AppSettings["Microsoft.ServiceBus.ConnectionString"]);
-            transport.UseTopology<ForwardingTopology>();
+            var topologysettings = transport.UseTopology<ForwardingTopology>();
+            topologysettings.UnicastRouting().AddPublisher("AzureMsmqBridge.azure", typeof(ISwellSizeChanged));
             configuration.SendFailedMessagesTo("error");
             configuration.AuditProcessedMessagesTo("audit");
 

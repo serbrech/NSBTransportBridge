@@ -20,11 +20,10 @@ namespace Bridge
             //just making sure the assembly is loaded
             var type = typeof(ISwellSizeChanged);
             ToAzureEndpoint = await StartForwardToAzureEndpoint().ConfigureAwait(false);
-            
-            //ToMsmqEndpoint = await StartForwardToMsmqEndpoint().ConfigureAwait(false);
+            ToMsmqEndpoint = await StartForwardToMsmqEndpoint().ConfigureAwait(false);
         }
 
-        private Task<IEndpointInstance> StartForwardToMsmqEndpoint()
+        private async Task<IEndpointInstance> StartForwardToMsmqEndpoint()
         {
             var endpointConfiguration = new EndpointConfiguration("AzureMsmqBridge.azure"); //we listen to  azure!
 
@@ -43,8 +42,16 @@ namespace Bridge
             endpointConfiguration.EnableInstallers();
             endpointConfiguration.UsePersistence<InMemoryPersistence>();
             endpointConfiguration.SendFailedMessagesTo("bridge.error");
-            
-            return Endpoint.Start(endpointConfiguration);
+
+            endpointConfiguration.UnicastRouting().AddPublisher("SurfLeague", typeof(ICanBeBridged));
+
+            endpointConfiguration.Conventions()
+             .DefiningMessagesAs(t => t.Namespace != null && t.Namespace.StartsWith("Messages"))
+             .DefiningEventsAs(t => t.Namespace != null && t.Namespace.StartsWith("Messages.Events"));
+
+            var endpoint = await Endpoint.Start(endpointConfiguration);
+            await endpoint.Subscribe<ICanBeBridged>();
+            return endpoint;
         }
 
         private async Task<IEndpointInstance> StartForwardToAzureEndpoint()
@@ -60,13 +67,14 @@ namespace Bridge
             endpointConfiguration.UsePersistence<InMemoryPersistence>();
             endpointConfiguration.SendFailedMessagesTo("bridge.error");
         
-            endpointConfiguration.UnicastRouting().AddPublisher("earth", typeof(ISwellSizeChanged));
+            endpointConfiguration.UnicastRouting().AddPublisher("earth", typeof(ICanBeBridged));
+
             endpointConfiguration.Conventions()
              .DefiningMessagesAs(t => t.Namespace != null && t.Namespace.StartsWith("Messages"))
              .DefiningEventsAs(t => t.Namespace != null && t.Namespace.StartsWith("Messages.Events"));
 
             var endpoint = await  Endpoint.Start(endpointConfiguration);
-            await endpoint.Subscribe<ISwellSizeChanged>();
+            await endpoint.Subscribe<ICanBeBridged>();
 
             return endpoint;
         }

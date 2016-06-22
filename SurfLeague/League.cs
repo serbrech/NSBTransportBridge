@@ -25,7 +25,7 @@ namespace SurfLeague
                 competition.Run();
                 if (competition.IsOver)
                 {
-                    context.Publish<CompetitionIsOver>(over => over.Identification = fijiGuid);
+                    context.Publish<ICompetitionIsOver>(over => over.Identification = fijiGuid);
                 }
             }
             else

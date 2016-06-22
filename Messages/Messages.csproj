@@ -41,8 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\AnalyzeElements.cs" />
+    <Compile Include="Events\ICompetitionIsOver.cs" />
     <Compile Include="Events\CompetitionScheduled.cs" />
-    <Compile Include="Events\SwellSizeChanged.cs" />
+    <Compile Include="Events\ICanBeBridged.cs" />
+    <Compile Include="Events\ISwellSizeChanged.cs" />
     <Compile Include="Events\Wind.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

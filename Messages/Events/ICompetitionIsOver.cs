@@ -2,9 +2,8 @@
 
 namespace Messages.Events
 {
-    public interface ICompetitionStarted
+    public interface ICompetitionIsOver
     {
         Guid Identification { get; set; }
-        string Name { get; set; }
     }
 }

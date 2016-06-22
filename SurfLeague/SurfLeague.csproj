@@ -7,8 +7,8 @@
     <ProjectGuid>{05030779-0515-4F4C-A5C2-EC6C8FE5929C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Heaven</RootNamespace>
-    <AssemblyName>Heaven</AssemblyName>
+    <RootNamespace>SurfLeague</RootNamespace>
+    <AssemblyName>SurfLeague</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

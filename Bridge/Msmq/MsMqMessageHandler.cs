@@ -6,11 +6,11 @@ using NServiceBus.Logging;
 
 namespace Bridge.Msmq
 {
-    public class MsmqMessageHandler : IHandleMessages<object>
+    public class MsmqMessageHandler : IHandleMessages<ICanBeBridged>
     {
         static ILog log = LogManager.GetLogger<MsmqMessageHandler>();
 
-        public Task Handle(object message, IMessageHandlerContext context)
+        public Task Handle(ICanBeBridged message, IMessageHandlerContext context)
         {
             log.Info($"received {message.GetType()} in MsmqHandler. Forwarding.");
             return Program.Host.ToAzureEndpoint.Publish(message);
