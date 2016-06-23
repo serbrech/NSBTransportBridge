@@ -46,7 +46,6 @@ namespace Bridge
             endpointConfiguration.UnicastRouting().AddPublisher("SurfLeague", typeof(ICanBeBridged));
 
             endpointConfiguration.Conventions()
-             .DefiningMessagesAs(t => t.Namespace != null && t.Namespace.StartsWith("Messages"))
              .DefiningEventsAs(t => t.Namespace != null && t.Namespace.StartsWith("Messages.Events"));
 
             var endpoint = await Endpoint.Start(endpointConfiguration);
@@ -70,12 +69,10 @@ namespace Bridge
             endpointConfiguration.UnicastRouting().AddPublisher("earth", typeof(ICanBeBridged));
 
             endpointConfiguration.Conventions()
-             .DefiningMessagesAs(t => t.Namespace != null && t.Namespace.StartsWith("Messages"))
              .DefiningEventsAs(t => t.Namespace != null && t.Namespace.StartsWith("Messages.Events"));
 
             var endpoint = await  Endpoint.Start(endpointConfiguration);
             await endpoint.Subscribe<ICanBeBridged>();
-
             return endpoint;
         }
 
